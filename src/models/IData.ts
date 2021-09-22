@@ -17,6 +17,7 @@ export interface IDataState {
 }
 
 export interface IDataStateFunctions extends IDataState {
+  initFilms: Function
   selectItem: Function
   setFavorite: Function
 }
