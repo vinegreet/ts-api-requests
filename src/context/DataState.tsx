@@ -1,12 +1,11 @@
 import React, { useReducer } from 'react';
-import DataContext from './DataContext';
-import { initialState } from '../models';
-import { saveFavorites } from './localStorage';
+import DataContext, { persistedState } from './DataContext';
 import dataReducer from './dataReducer';
 import { IDataFilm, IDataStateFunctions } from '../models/IData';
+import { saveSetFavorite } from './saveSetFavorite';
 
 const DataState: React.FC = ({ children }) => {
-  const [ state, dispatch ] = useReducer(dataReducer, initialState);
+  const [ state, dispatch ] = useReducer(dataReducer, persistedState);
   const { favorites, films, selectedId } = state;
 
   const initFilms = (films: IDataFilm[]): void => {
@@ -17,28 +16,25 @@ const DataState: React.FC = ({ children }) => {
   }
 
   const setFavorite = (id: number): void => {
-    // If favorite hasn't been added yet - add it
     if (!favorites.includes(id)) {
       const updatedFavorites = [ ...favorites, id ];
-      saveFavorites(updatedFavorites)
-        .then(() => {
-          dispatch({
-            type: 'SET_FAVORITE',// TODO: create actions types constants
-            payload: id,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-          // If the local storage update fails, the favorite should not be added.
-          // TODO: looks like user's privacy mode does not allow the use of local storage. Show them a message about it.
-        });
+      // For better debuggability, I pass the ID that should be added, and not the updated array
+      saveSetFavorite(dispatch, updatedFavorites, id, 'SET_FAVORITE');
     }
   };
+
+  const unsetFavorite = (id: number): void => {
+    if(favorites.includes(id)) {
+      const updatedFavorites = favorites.filter((item) => item !== id);
+      // For better debuggability, I pass the ID that should be removed, and not the updated array
+      saveSetFavorite(dispatch, updatedFavorites, id, 'UNSET_FAVORITE');
+    }
+  }
 
   const selectItem = (id: number): void => {
     if (id !== selectedId) {
       dispatch({
-        type: 'SELECT ITEM',
+        type: 'SELECT_ITEM',
         payload: id,
       });
     }
@@ -51,6 +47,7 @@ const DataState: React.FC = ({ children }) => {
     initFilms,
     selectItem,
     setFavorite,
+    unsetFavorite,
   };
 
   return (
