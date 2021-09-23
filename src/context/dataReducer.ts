@@ -19,6 +19,12 @@ const reducer = (state: IDataState, action: IAction) => {
         favorites: [ ...state.favorites, action.payload ],
       };
 
+    case 'UNSET_FAVORITE':
+      return {
+        ...state,
+        favorites: state.favorites.filter((item) => item !== action.payload),
+      };
+
     case 'SELECT_ITEM':
       return {
         ...state,
