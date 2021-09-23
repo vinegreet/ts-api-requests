@@ -1,0 +1,9 @@
+.choose-the-film {
+  display: flex;
+  background-color: var(--color-content-bg);
+  padding: 2em;
+}
+
+.choose-the-film_title {
+  vertical-align: middle;
+}
