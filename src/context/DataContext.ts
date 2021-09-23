@@ -3,7 +3,7 @@ import { initialState } from '../models';
 import { IDataStateFunctions } from '../models/IData';
 import { loadFavorites } from './localStorage';
 
-const persistedState = {
+export const persistedState = {
   ...initialState,
   favorites: loadFavorites() ?? initialState.favorites,
 }
