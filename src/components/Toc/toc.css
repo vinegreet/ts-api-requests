@@ -1,7 +1,6 @@
 .toc {
-  width: 23em;
   height: 100%;
-  padding: 2em;
+  padding: 0.5em;
   margin-top: 0;
 }
 
@@ -26,4 +25,11 @@
 
 .toc_item--active {
   background-color: var(--menu-item-background-color-active);
+}
+
+@media screen and (min-width: 768px) {
+  .toc {
+    width: 23em;
+    padding: 2em;
+  }
 }
