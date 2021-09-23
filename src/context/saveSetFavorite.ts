@@ -6,7 +6,7 @@ export const saveSetFavorite = (
   dispatch: Dispatch<IAction>,
   favorites: number[],
   id: number,
-  actionType: 'SET_FAVORITE' | 'UNSET_FAVORITE',
+  actionType: string,
 ): void => {
   saveFavorites(favorites)
     .then(() => {

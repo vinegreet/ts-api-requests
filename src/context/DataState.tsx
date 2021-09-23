@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import DataContext, { persistedState } from './DataContext';
-import dataReducer from './dataReducer';
+import dataReducer, { actionTypes } from './dataReducer';
 import { IDataFilm, IDataStateFunctions } from '../models/IData';
 import { saveSetFavorite } from './saveSetFavorite';
 
@@ -10,7 +10,7 @@ const DataState: React.FC = ({ children }) => {
 
   const initFilms = (films: IDataFilm[]): void => {
     dispatch({
-      type: 'INIT_FILMS',
+      type: actionTypes.INIT_FILMS,
       payload: films,
     });
   }
@@ -19,7 +19,7 @@ const DataState: React.FC = ({ children }) => {
     if (!favorites.includes(id)) {
       const updatedFavorites = [ ...favorites, id ];
       // For better debuggability, I pass the ID that should be added, and not the updated array
-      saveSetFavorite(dispatch, updatedFavorites, id, 'SET_FAVORITE');
+      saveSetFavorite(dispatch, updatedFavorites, id, actionTypes.SET_FAVORITE);
     }
   };
 
@@ -27,14 +27,14 @@ const DataState: React.FC = ({ children }) => {
     if(favorites.includes(id)) {
       const updatedFavorites = favorites.filter((item) => item !== id);
       // For better debuggability, I pass the ID that should be removed, and not the updated array
-      saveSetFavorite(dispatch, updatedFavorites, id, 'UNSET_FAVORITE');
+      saveSetFavorite(dispatch, updatedFavorites, id, actionTypes.UNSET_FAVORITE);
     }
   }
 
   const selectItem = (id: number): void => {
     if (id !== selectedId) {
       dispatch({
-        type: 'SELECT_ITEM',
+        type: actionTypes.SELECT_ITEM,
         payload: id,
       });
     }
