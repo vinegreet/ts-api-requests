@@ -1,5 +1,6 @@
 .chosen-film {
   padding: 2em;
+	overflow-y: scroll;
 }
 
 .chosen-film_plot {
