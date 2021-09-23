@@ -1,5 +1,5 @@
 .chosen-film {
-  padding: 2em;
+  padding: 0.5em 1em;
 	overflow-y: scroll;
 	grid-row-start: 1;
 }
@@ -75,5 +75,6 @@
 @media screen and (min-width: 768px) {
 	.chosen-film {
     grid-column-start: 2;
+		padding: 2em;
 	}
 }
