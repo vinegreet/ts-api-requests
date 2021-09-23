@@ -10,4 +10,5 @@ export const initialState: IDataStateFunctions = {
   initFilms() {},
   selectItem() {},
   setFavorite() {},
+  unsetFavorite() {},
 }

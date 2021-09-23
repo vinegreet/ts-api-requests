@@ -20,4 +20,5 @@ export interface IDataStateFunctions extends IDataState {
   initFilms: Function
   selectItem: Function
   setFavorite: Function
+  unsetFavorite: Function
 }
