@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { IAction } from "./dataReducer";
-import { saveFavorites } from './localStorage';
+import { saveFavorites } from '../helpers/localStorage';
 
 export const saveSetFavorite = (
   dispatch: Dispatch<IAction>,

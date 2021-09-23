@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { initialState } from '../models';
 import { IDataStateFunctions } from '../models/IData';
-import { loadFavorites } from './localStorage';
+import { loadFavorites } from '../helpers/localStorage';
 
 export const persistedState = {
   ...initialState,
