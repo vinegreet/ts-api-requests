@@ -1,24 +1,29 @@
 .toc {
-  width: 20em;
+  width: 23em;
   height: 100%;
-  background-color: #000;
-  padding: 1em;
+  padding: 2em;
+  margin-top: 0;
 }
 
 .toc_item {
   display: block;
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid gainsboro;
-  background-color: darkgray;
+  border: var(--border);
+  border-bottom: none;
+  background-color: var(--menu-item-background-color);
   padding: 1em 0 1em;
   cursor: pointer;
 }
 
 .toc_item:last-child {
-  border-bottom: none;
+  border-bottom: var(--border);
+}
+
+.toc_item:hover {
+  background-color: var(--menu-item-background-color-hovered);
 }
 
 .toc_item--active {
-  background-color: gray;
+  background-color: var(--menu-item-background-color-active);
 }
