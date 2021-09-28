@@ -17,7 +17,7 @@ export const saveFavorites = (favorites: number[]) => {
       localStorage.setItem('favorites', serializedFavorites);
       resolve(null);
     } catch (err) { 
-      reject();
+      reject(err);
     }
   })
 };
